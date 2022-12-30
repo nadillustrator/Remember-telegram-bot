@@ -3,6 +3,7 @@ package pro.sky.telegrambot.service;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
+import com.pengrad.telegrambot.request.SendPhoto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,10 @@ public class SendMessageService {
     public void sendMessage(Long chatId, String message, String userName) {
         String str = String.format(message, userName);
         telegramBot.execute(new SendMessage(chatId, str));
+    }
+
+    public void sendPhoto(Long chatId, String fileId) {
+        telegramBot.execute(new SendPhoto(chatId, fileId));
     }
 
     public void sendWelcome(Update update) {
