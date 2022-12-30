@@ -21,6 +21,10 @@ public class NotificationTask {
     @Column(name = "isshown")
     private boolean isShown;
 
+    @OneToOne
+    @JoinColumn(name = "photo_id", referencedColumnName = "id")
+    private Photo photo;
+
     public NotificationTask() {
     }
 
@@ -69,6 +73,14 @@ public class NotificationTask {
 
     public void setShown(boolean shown) {
         isShown = shown;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
     }
 
     @Override
